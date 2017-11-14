@@ -2,12 +2,15 @@ import React from 'react';
 import { mount } from 'enzyme';
 import Input from '..';
 import Form from '../../form';
+import focusTest from '../../../tests/shared/focusTest';
 
 const { TextArea } = Input;
 
 const delay = timeout => new Promise(resolve => setTimeout(resolve, timeout));
 
 describe('Input', () => {
+  focusTest(Input);
+
   it('should support maxLength', async () => {
     const wrapper = mount(
       <Input maxLength="3" />
@@ -17,6 +20,8 @@ describe('Input', () => {
 });
 
 describe('TextArea', () => {
+  focusTest(TextArea);
+
   it('should auto calculate height according to content length', async () => {
     const wrapper = mount(
       <TextArea value="" readOnly autosize />
